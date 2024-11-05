@@ -11,30 +11,29 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/wallets")
 @RequiredArgsConstructor
 public class WalletController implements BaseController {
 
     private final WalletService walletService;
 
-    @GetMapping
+    @GetMapping("/wallets")
     @JsonView(WalletDto.Basic.class)
     public List<WalletDto> getAllWalletDTOs(){
         return walletService.getAllWalletDTOs();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/wallets/{id}")
     @JsonView(WalletDto.Detail.class)
     public WalletDto getWalletDTOById(@PathVariable("id") UUID id){
         return walletService.getWalletDTO(id);
     }
 
-    @PostMapping
+    @PostMapping("/wallets")
     public WalletEntity createWallet(@RequestBody WalletEntity wallet) {
         return walletService.saveWallet(wallet);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/wallets/{id}")
     public WalletEntity updateWallet(@PathVariable("id") UUID id, @RequestBody WalletEntity wallet) {
         return walletService.updateWallet(id, wallet);
     }

@@ -12,30 +12,29 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/accounts")
 @RequiredArgsConstructor
 public class AccountController implements BaseController {
 
     private final AccountService accountService;
 
-    @GetMapping
+    @GetMapping("/accounts")
     @JsonView(AccountDto.Basic.class)
     public List<AccountDto> getAllAccounts() {
         return accountService.getAllAccountDtos();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/accounts/{id}")
     @JsonView(AccountDto.Detail.class)
     public AccountDto getAccount(@PathVariable("id") UUID id) {
         return accountService.getAccountDto(id);
     }
 
-    @PostMapping
+    @PostMapping("/accounts")
     public AccountEntity createAccount(@RequestBody AccountEntity account) {
         return accountService.saveAccount(account);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/accounts/{id}")
     public AccountEntity updateAccount(@PathVariable("id") UUID id, @RequestBody @Valid AccountEntity account) {
         return accountService.updateAccount(id, account);
     }
