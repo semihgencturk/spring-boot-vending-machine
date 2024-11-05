@@ -1,6 +1,7 @@
 package com.tkpay.vendingmachine.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.tkpay.vendingmachine.enums.Currencies;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ public class WalletDto {
     private BigDecimal balance;
 
     @JsonView({Basic.class})
-    private CurrencyDto currency;
+    private Currencies currency;
 
     @JsonView({Detail.class})
     private AccountDto account;

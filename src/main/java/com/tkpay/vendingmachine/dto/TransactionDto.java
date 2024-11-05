@@ -1,5 +1,6 @@
 package com.tkpay.vendingmachine.dto;
 
+import com.tkpay.vendingmachine.enums.Currencies;
 import com.tkpay.vendingmachine.enums.TransactionStatus;
 import com.tkpay.vendingmachine.enums.TransactionType;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -26,7 +27,7 @@ public class TransactionDto {
     private BigDecimal amount;
 
     @JsonView({Basic.class})
-    private CurrencyDto currency;
+    private Currencies currency;
 
     @JsonView({Basic.class})
     private TransactionType type;
