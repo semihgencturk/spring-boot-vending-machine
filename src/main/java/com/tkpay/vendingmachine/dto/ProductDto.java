@@ -1,6 +1,7 @@
 package com.tkpay.vendingmachine.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.tkpay.vendingmachine.enums.Currencies;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,7 @@ public class ProductDto {
     private BigDecimal amount;
 
     @JsonView({Basic.class})
-    private CurrencyDto currency;
+    private Currencies currency;
 
     @JsonView({Basic.class})
     private int count;
